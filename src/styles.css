@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-app-bg text-app-text font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d6d8e6;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-sm px-4 py-2 text-sm font-semibold transition active:translate-y-px disabled:opacity-60 disabled:pointer-events-none;
+  }
+  .btn-sm {
+    @apply rounded-[8px] px-2.5 py-1.5 text-xs;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-br from-primary-light to-primary text-white shadow-[0_6px_16px_-6px_rgba(79,70,229,0.55)] hover:brightness-[1.06] hover:shadow-[0_8px_20px_-6px_rgba(79,70,229,0.6)];
+  }
+  .btn-outline-primary {
+    @apply btn border border-[#d9d7fb] text-primary bg-white hover:bg-primary hover:text-white hover:border-primary;
+  }
+  .btn-outline-danger {
+    @apply btn border border-rose-200 text-rose-600 bg-white hover:bg-rose-600 hover:text-white hover:border-rose-600;
+  }
+  .btn-link {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark;
+  }
+
+  /* Segmented control (tab-style filter groups) */
+  .segmented {
+    @apply inline-flex items-center gap-1 rounded-sm bg-app-border/60 p-1;
+  }
+  .segmented-btn {
+    @apply rounded-[8px] px-3 py-1.5 text-sm font-semibold text-app-muted transition;
+  }
+  .segmented-btn.active {
+    @apply bg-white text-app-text shadow-sm;
+  }
+
+  /* Cards / surfaces */
+  .card-surface {
+    @apply rounded-lg border border-app-border bg-surface shadow-sm;
+  }
+
+  .table-surface {
+    @apply overflow-hidden rounded-lg border border-app-border bg-surface shadow-sm;
+  }
+
+  .app-table {
+    @apply w-full text-sm;
+  }
+  .app-table thead th {
+    @apply bg-[#fafafd] px-4 py-3.5 text-left text-[0.72rem] font-bold uppercase tracking-wider text-app-muted border-b border-app-border;
+  }
+  .app-table tbody td {
+    @apply px-4 py-3.5 align-middle border-b border-app-border text-app-text;
+  }
+  .app-table tbody tr {
+    @apply transition-colors hover:bg-[#f7f7fd];
+  }
+  .app-table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Avatar chip */
+  .avatar-chip {
+    @apply inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary-light to-accent text-xs font-bold text-white;
+  }
+
+  /* Badges (soft pill style) */
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-[0.72rem] font-semibold tracking-wide;
+  }
+  .badge-success { @apply badge bg-green-100 text-green-700; }
+  .badge-danger { @apply badge bg-rose-100 text-rose-600; }
+  .badge-warning { @apply badge bg-amber-100 text-amber-700; }
+  .badge-info { @apply badge bg-sky-100 text-sky-700; }
+  .badge-secondary { @apply badge bg-app-border text-app-muted; }
+  .badge-primary { @apply badge bg-indigo-100 text-primary; }
+  .badge-dark { @apply badge bg-gray-200 text-gray-700; }
+
+  /* List group */
+  .list-group {
+    @apply overflow-hidden rounded border border-app-border;
+  }
+  .list-group-item {
+    @apply flex items-center justify-between border-b border-app-border px-4 py-3.5 transition-colors last:border-b-0 hover:bg-[#f7f7fd];
+  }
+
+  /* Forms */
+  .form-label {
+    @apply mb-1 block text-[0.82rem] font-semibold text-app-muted;
+  }
+  .form-control, .form-select {
+    @apply w-full rounded-sm border border-app-border px-3.5 py-2 text-[0.92rem] text-app-text outline-none transition focus:border-primary-light focus:ring-4 focus:ring-primary-light/15;
+  }
+
+  /* Empty states */
+  .empty-state {
+    @apply flex flex-col items-center justify-center gap-3 px-4 py-12 text-center text-app-muted;
+  }
+  .empty-state i {
+    @apply text-3xl text-[#d3d5e6];
+  }
+
+  /* Modal */
+  .app-modal {
+    @apply relative m-auto w-[92vw] max-w-[500px] max-h-[90vh] overflow-y-auto rounded-lg bg-white p-7 text-app-text shadow-lg outline-none;
+  }
+  .app-modal h4 {
+    @apply mb-0 text-xl;
+  }
+  .app-modal hr {
+    @apply my-3.5 border-t border-black/10;
+  }
+  .modal-close-btn {
+    @apply absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-app-border text-app-muted transition-colors hover:bg-rose-100 hover:text-rose-600;
+  }
+  .modal-fondo {
+    @apply fixed inset-0 flex items-center justify-center bg-[#14112b]/45 backdrop-blur-[2px] transition-opacity duration-200;
+  }
+  .ReactModalPortal > div {
+    opacity: 0;
+  }
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
+
+  /* Sidebar */
+  .sidebar-link {
+    @apply flex items-center rounded-[10px] px-3.5 py-2.5 text-sm font-medium text-white/60 transition-colors hover:bg-white/[0.06] hover:text-white;
+  }
+  .sidebar-link.active {
+    @apply bg-gradient-to-br from-primary-light to-primary font-semibold text-white shadow-[0_6px_16px_-6px_rgba(99,102,241,0.7)];
+  }
+}
